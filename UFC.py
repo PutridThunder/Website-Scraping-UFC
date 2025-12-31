@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-
 while True:
     
     UserInput = input('what UFC are we on right now? (1-current): ')
@@ -21,8 +20,12 @@ while True:
 
 fights = parsedsite.select('.c-listing-fight')
 
+#select and select_one is new to me
+#they are similar to find and findall in beautifulsoup
+#but are using css selectors
+
 def FindName(corner):
-    first = corner.select_one('.c-listing-fight__corner-given-name')
+    first = corner.select_one('.c-listing-fight__corner-given-name') 
     last = corner.select_one('.c-listing-fight__corner-family-name')
 
     if first and last:
@@ -123,4 +126,5 @@ for fight in fights:
 
     FindDescription(blue_name)
     print(f"\n{'='*60}\n{'='*60}")
+
 
